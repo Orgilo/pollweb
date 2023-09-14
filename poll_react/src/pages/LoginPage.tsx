@@ -23,7 +23,7 @@ const LoginPage: FC =() => {
                   setTokenToLocalStorage('token', data.token) 
                   dispatch(login(data))
                   toast.success('Амжилттай нэвтэрлээ.')
-                  navigate("/");
+                  navigate("/Нүүр");
                  }
              } catch (err:any){
               const error = err.response?.data.message;

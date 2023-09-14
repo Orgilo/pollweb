@@ -1,5 +1,5 @@
 import { FC } from "react"
-import Navbar from "../components/navbar";
+
 import surveylogo from "../image/surveylogo.svg"
 import survey from "../image/survey.svg"
 import note from "../image/note.svg"
@@ -7,11 +7,12 @@ import graph from "../image/graph.svg"
 import user from "../image/user.svg"
 import { FcFaq } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import Navbarafter from "../components/navbar2";
 
-const HomePage: FC =() => {
+const Нүүр: FC =() => {
     return (
         <div>
-            <Navbar/>
+            <Navbarafter/>
             <div className="h-96 relative text-white bg-gradient-to-r from-emerald-800 to-emerald-600">
                 <div className="absolute top-24 left-44">
                     <Link to='/'><h1 className="text-7xl font-bold">Санал асуулгa</h1></Link>
@@ -59,4 +60,4 @@ const HomePage: FC =() => {
 }
 
 
-export default HomePage
+export default Нүүр

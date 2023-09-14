@@ -13,7 +13,7 @@ import {
 } from "react-icons/ri";
 
 const Sidebar: React.FC = () => {
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
   const [showSubmenu, setShowSubmenu] = useState(false);
   
   return (
@@ -30,7 +30,7 @@ const Sidebar: React.FC = () => {
           <ul>
             <li>
               <Link
-                to="/"
+                to="/Useradmin"
                 className="flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-secondary-900 transition-colors"
               >
                 <RiBarChart2Line className="text-primary" /> Хэрэглэгчид
@@ -65,7 +65,7 @@ const Sidebar: React.FC = () => {
                 </li>
                 <li>
                   <Link
-                    to="/"
+                    to="/Polladmin"
                     className="py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-gray-500 before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100 hover:text-white transition-colors"
                   >
                     Хариулт
@@ -73,7 +73,7 @@ const Sidebar: React.FC = () => {
                 </li>
                 <li>
                   <Link
-                    to="/"
+                    to="/Polladmin"
                     className="py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-gray-500 before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100 hover:text-white transition-colors"
                   >
                     Perfiles
@@ -109,12 +109,12 @@ const Sidebar: React.FC = () => {
           </Link>
         </nav>
       </div>
-      <button
+      {/* <button
         onClick={() => setShowMenu(!showMenu)}
         className="xl:hidden fixed bottom-4 right-4 bg-primary text-black p-3 rounded-full z-50"
       >
         {showMenu ? <RiCloseLine /> : <RiMenu3Line />}
-      </button>
+      </button> */}
     </>
   );
 };

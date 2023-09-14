@@ -16,10 +16,8 @@ export class Poll {
     
     @OneToMany(() => Question, (question) => question.poll)
     questions: Question[];
-    @OneToMany(() => Answer, (answers) => answers.poll )
-    answers: Answer[];
-
-
+    
+  
 
     @Column({ name: 'title', type: 'varchar', length: 50 })
     title: string;

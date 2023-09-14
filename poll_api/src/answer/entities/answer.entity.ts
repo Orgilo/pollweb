@@ -1,7 +1,7 @@
+
 import { Poll } from "src/poll/entities/poll.entity";
-import { Question } from "src/question/entities/question.entity";
 import { User } from "src/user/entities/user.entity";
-import { Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn,  } from "typeorm";
 
 @Entity()
 export class Answer {
@@ -11,16 +11,12 @@ export class Answer {
     @ManyToOne(() => User, (user) => user.answers)
     @JoinColumn({name: 'user_id' })
     user: User
+    
+    @Column({ name: 'answer', type: 'varchar', nullable: true})
+    answer: string;
+     // Add fields to store question information
+     
+     
 
-    @ManyToOne(() => Question, (question) => question.answers)
-    @JoinColumn({name: 'question_id'})
-    question: Question
-    
-    
-    @ManyToOne(() => Poll, (poll) => poll.answers)
-    @JoinColumn({name: 'poll_id'})
-    poll: Poll
-    
+
 }
-
-

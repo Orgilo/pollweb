@@ -1,6 +1,14 @@
 export interface IUserData{
+    
     username: string
     password: string
+    firstName: string 
+    lastName: string 
+    email: string
+}
+export interface IUserDatas{
+    id: number
+    username: string
     firstName: string 
     lastName: string 
     email: string
@@ -31,6 +39,7 @@ export interface IResponseUserData{
      user: IResponseUser
 
 }
+
 export interface IPoll {
     id: number;
     title:string;
@@ -39,8 +48,38 @@ export interface IPoll {
     updatedAt: string;
     deletedAt: string;
 }
+export interface AddAnswer {
+    answer: string | undefined
+}
+
 export interface IPolladd {
     title:string;
     explanation: string;
 }
+
+export interface viewquestion{  
+    questiontitle: string;
+    qanswer: string;
+    title:string;
+    options: { value: string }[]
+}
+export interface IresponseQuestionLoader{
+    options:viewquestion
+}
+export interface IresponseAnswerLoader{
+    answer:AddAnswer
+}
+
+
+export interface viewquestions{  
+    id: number;
+    poll_id: number;
+    questiontitle: string;
+    qanswer: string;
+    title:string;
+    options: { value: string }[]
+}
+
+
+
 

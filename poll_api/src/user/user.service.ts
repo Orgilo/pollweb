@@ -53,10 +53,14 @@ export class UserService {
       },
     });
   }
+  
   async findById(id: number): Promise<User | null> {
     return this.userRepository.findOne({ where: { id } }); // Provide where conditions
   }
-  
+
+  async findAll(): Promise<User[]> {
+    return this.userRepository.find(); // Fetch all users from the database
+  }
   
  
 }

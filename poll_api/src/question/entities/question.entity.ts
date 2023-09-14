@@ -1,4 +1,4 @@
-import { Answer } from "src/answer/entities/answer.entity";
+
 import { Poll } from "src/poll/entities/poll.entity";
 import { User } from "src/user/entities/user.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
@@ -12,28 +12,23 @@ export class Question {
     @JoinColumn({name: 'user_id' })
     user: User
      
-
     @ManyToOne(() => Poll, (poll) => poll.questions)
     @JoinColumn({name: 'poll_id'})
     poll: Poll
 
+  
+    @Column({ name: 'questiontitle', type: 'varchar', length: 200 })
+    questiontitle: string;
 
+    @Column({ name: 'qanswer', type: 'varchar', length: 1000 })
+    qanswer: string;
 
-    @OneToMany(() => Answer, (answer) => answer.question)
-     answers: Answer[];
-    
-
-
-
-
-
-    @Column({ name: 'title', type: 'varchar', length: 50 })
+    @Column({ name: 'title', type: 'varchar', length: 100, nullable: true })
     title: string;
 
-    @Column({ name: 'question_choose', type: 'date' })
-    questionChoose: Date;
 
-    @Column({ name: 'explanation', type: 'varchar', length: 100 })
-    explanation: string;
+    @Column({ type: 'jsonb', nullable: true }) // Use 'jsonb' type for JSON object
+    options: Record<string, any>; 
+
 }
 

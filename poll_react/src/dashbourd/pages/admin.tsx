@@ -1,16 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { Poll } from '../../../../api/src/poll/entities/poll.entity';
+import { Poll } from '../../../../poll_api/src/poll/entities/poll.entity';
 import { fetchPolls, createPoll} from './fetchData';
 import Sidebar from '../components/sidebar';
 import Header from '../components/header';
-import axios from 'axios';
 import { instance } from '../../api/axios.api';
 import { IPoll, IPolladd } from '../../types/types';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import { AiOutlineEye } from 'react-icons/ai';
 
 interface TableProps {
   data: Poll[];
 }
+export const pollAction = async({request}:any)=> {
+     switch(request.method){
+      case 'POST':{
+        const formData = await request.formdata()
+        const title = {
+          title: formData.get('title')
+        }
+        await instance.post('/polls', title)
+        return null
+      }
+      case 'PATH':{
+        return null
+      }
+      case 'Delete':{
+
+      }
+     }
+}
+
 export const pollloader = async () => {
    const {data} = await instance.get<IPoll[]>('/polls')
    return data
@@ -65,7 +84,7 @@ export const pollloader = async () => {
       <div className='flex'>
         <Sidebar />
       </div>
-      <div className='flex flex-col'>
+      <div className='flex flex-col '>
         <Header />
         <div className="Box-sc-g0xbh4-0 iJmJly">
         <div className="flex justify-end mb-4 mt-4">
@@ -94,6 +113,10 @@ export const pollloader = async () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Updated At
               </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Action
+              </th>
+              
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
@@ -110,13 +133,15 @@ export const pollloader = async () => {
                 <td className="px-6 py-4 whitespace-nowrap">
                   {new Date(poll.updatedAt).toLocaleString()}
                 </td>
+                
+                <td ><Link to={`/Polldetials/${poll.id}`}> <AiOutlineEye className="m-10" /> </Link> </td>
               </tr>
             ))}
           </tbody>
         </table>
         {openModal && (
-            <div className="fixed inset-0 flex items-center justify-center z-50">
-              <div className="p-4 bg-gray-300 rounded-lg shadow-lg">
+            <div className="fixed inset-0 flex items-center justify-center z-50 ">
+              <div className="p-4  bg-gray-300 rounded-lg shadow-lg w-max ">
                 <input
                   type="text"
                   className="w-full p-2 rounded-md border"
@@ -125,7 +150,7 @@ export const pollloader = async () => {
                   onChange={handleChangeFormTitle}
                 />
                 <textarea
-                  className="mt-2 w-full p-2 rounded-md border min-h-[120px]"
+                  className="mt-2 w-full p-2 rounded-md border min-h-[120px] w-200 "
                   placeholder="Маягтын тодорхойлолт"
                   rows={3}
                   value={formDescription}
@@ -142,9 +167,8 @@ export const pollloader = async () => {
 
                     className="bg-green-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
                     onClick={handleAddQuestion}
-                    
+                
                   >
-                    
                     Асуулт нэмэх
                   </button>
                 </div>

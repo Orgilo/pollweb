@@ -10,7 +10,7 @@ import {
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import "@szhsin/react-menu/dist/index.css";
 import "@szhsin/react-menu/dist/transitions/slide.css";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { useAppDispatch } from "../../store/hook";
 import { logout } from "../../store/user/userSlice";
@@ -25,7 +25,7 @@ const Header: React.FC = () => {
     
   }
   return (
-    <header className="h-[7vh] md:h-[10vh] border-b border-secondary-100 p-8 flex items-center justify-end">
+    <header className="h-[7vh] md:h-[10vh] sticky top-0 z-10 border-b border-secondary-100 p-8 flex items-center justify-end">
       {/* Menu */}
       {isAuth && (
       <nav className="flex items-center gap-2">
